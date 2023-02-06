@@ -8,10 +8,15 @@ export const loginHandler = (req: Request, res: Response) => {
   // generate token: fdjakldfjkaslñfjkdslañ1232312321
   // BCrypt o Crypto para el Toekn
 
-  jwt.sign(
+  const token = jwt.sign(
     {
       test: 'test',
     },
-    'secret-fafdasdfadsdfas'
+    'secret-fafdasdfadsdfas',
+    {
+      expiresIn: 60 * 60 * 24,
+    }
   )
+
+  return res.json({ token })
 }

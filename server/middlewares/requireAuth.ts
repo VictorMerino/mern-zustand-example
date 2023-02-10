@@ -22,6 +22,7 @@ export const requireAuth = (
       return res.status(status).json({ message: 'Unauthorized (bad secret)' })
 
     status = 200
+    req.user = user
     next()
   })
 }

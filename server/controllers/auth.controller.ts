@@ -22,5 +22,6 @@ export const loginHandler = (req: Request, res: Response) => {
 }
 
 export const profileHandler = (req: Request, res: Response) => {
-  return res.json({ message: 'profile data' })
+  const user = req.user
+  return res.json({ message: 'profile data', user })
 }

@@ -20,3 +20,7 @@ export const loginHandler = (req: Request, res: Response) => {
 
   return res.json({ token })
 }
+
+export const profileHandler = (req: Request, res: Response) => {
+  return res.json({ message: 'profile data' })
+}

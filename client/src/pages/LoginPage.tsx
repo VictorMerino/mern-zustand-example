@@ -2,7 +2,7 @@ import { FormEvent } from 'react'
 import { loginRequest, profileRequest } from '../api/auth'
 import { useAuthStore } from '../store/auth'
 
-function LoginPage() {
+export function LoginPage() {
   const setToken = useAuthStore(state => state.setToken)
   const setProfile = useAuthStore(state => state.setProfile)
 
@@ -27,5 +27,3 @@ function LoginPage() {
     </form>
   )
 }
-
-export default LoginPage

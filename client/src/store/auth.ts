@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 type State = {
   token: String | null
@@ -7,7 +8,12 @@ type State = {
 type Actions = {
   setToken: (token: string) => void
 }
-const useAuthStore = create<State & Actions>(set => ({
-  token: null,
-  setToken: (token: string) => set(state => ({ token })),
-}))
+const useAuthStore = create(
+  persist<State & Actions>(
+    set => ({
+      token: null,
+      setToken: (token: string) => set(state => ({ token })),
+    }),
+    { name: 'auth' }
+  )
+)

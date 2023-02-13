@@ -8,7 +8,7 @@ type State = {
 type Actions = {
   setToken: (token: string) => void
 }
-const useAuthStore = create(
+export const useAuthStore = create(
   persist<State & Actions>(
     set => ({
       token: null,

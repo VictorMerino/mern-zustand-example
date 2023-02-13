@@ -1,7 +1,9 @@
 import { FormEvent } from 'react'
 import { loginRequest } from '../api/auth'
+import { useAuthStore } from '../store/auth'
 
 function LoginPage() {
+  const setToken = useAuthStore(state => state.setToken)
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const email = (e.currentTarget.elements[0] as HTMLInputElement).value
@@ -9,6 +11,8 @@ function LoginPage() {
 
     console.log(email, password)
     const response = await loginRequest(email, password)
+    setToken(response.data.token)
+
     console.log(response)
   }
   return (

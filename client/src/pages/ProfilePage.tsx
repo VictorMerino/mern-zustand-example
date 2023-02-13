@@ -1,5 +1,7 @@
 import React from 'react'
+import { useAuthStore } from '../store/auth'
 
 export const ProfilePage = () => {
-  return <div>ProfilePage</div>
+  const profile = useAuthStore(state => state.profile)
+  return <div>ProfilePage {JSON.stringify(profile)}</div>
 }

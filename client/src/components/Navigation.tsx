@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthStore } from '../store/auth'
 
 export const Navigation = () => {
+  const logoutUser = useAuthStore(state => state.logout)
+
   return (
     <nav>
       <ul>
@@ -16,6 +19,9 @@ export const Navigation = () => {
         </li>
         <li>
           <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <button onClick={logoutUser}>Logout</button>
         </li>
       </ul>
     </nav>

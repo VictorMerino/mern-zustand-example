@@ -3,7 +3,10 @@ import { HomePage, LoginPage, ProfilePage, RegisterPage } from './pages'
 import { Navigation } from './components/Navigation'
 import { ProtectedRoutes } from './components/ProtectedRoutes'
 
+import { useAuthStore } from './store/auth'
+
 function App() {
+  const profile = useAuthStore(state => state.profile)
   return (
     <BrowserRouter>
       <Navigation />
@@ -12,7 +15,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<HomePage />} />
 
-        <Route element={<ProtectedRoutes isAllowed={false} />}>
+        <Route element={<ProtectedRoutes isAllowed={!!profile} />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/dashboard" element={<ProfilePage />} />
         </Route>
